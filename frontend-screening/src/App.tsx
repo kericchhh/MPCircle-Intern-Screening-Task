@@ -1,29 +1,22 @@
-import { useQuery } from "@tanstack/react-query"
-import { getUser } from "./services/users"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+
+import LoginPage from "./pages/LoginPage"
+import DashboardPage from "./pages/DashboardPage"
+import AssignmentsPage from "./pages/AssignmentsPage"
+import CoursesPage from "./pages/CoursesPage"
 
 function App() {
-  const { data, isPending, isError, error } = useQuery({
-    queryKey: ["user"],
-    queryFn: getUser,
-  })
-
-  if (isPending) {
-    return <p>Loading...</p>
-  }
-
-  if (isError) {
-    return <p>Error: {error.message}</p>
-  }
-
-  return (
-    <main>
-      <h1>
-        Welcome, {data.firstName} {data.lastName}
-      </h1>
-
-      <p>{data.email}</p>
-    </main>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Navigate to ="/login" replace />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/assignments" element={<AssignmentsPage />} />
+                <Route path="/courses" element={<CoursesPage />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App
