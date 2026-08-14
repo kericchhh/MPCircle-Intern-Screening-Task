@@ -5,15 +5,17 @@ import DashboardPage from "./pages/DashboardPage"
 import AssignmentsPage from "./pages/AssignmentsPage"
 import CoursesPage from "./pages/CoursesPage"
 
+import ProtectedRoute from "./components/ProtectedRoute"
+
 function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navigate to ="/login" replace />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/assignments" element={<AssignmentsPage />} />
-                <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /> </ProtectedRoute>} />
+                <Route path="/assignments" element={<ProtectedRoute><AssignmentsPage /> </ProtectedRoute>} />
+                <Route path="/courses" element={<ProtectedRoute><CoursesPage /> </ProtectedRoute>} />
             </Routes>
         </BrowserRouter>
     )

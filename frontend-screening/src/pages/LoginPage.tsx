@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
 import { loginUser } from "../services/auth"
+import { useAuth } from "../context/AuthContext"
 
 import {
     loginSchema,
@@ -11,9 +12,12 @@ import {
 
 export default function LoginPage() {
     const navigate = useNavigate()
+    const { login } = useAuth()
+
     const loginMutation = useMutation({
         mutationFn: loginUser,
         onSuccess: () => {
+            login()
             navigate("/dashboard")
         }
     })
