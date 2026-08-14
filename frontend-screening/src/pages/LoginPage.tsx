@@ -27,51 +27,53 @@ export default function LoginPage() {
         loginMutation.mutate(data)
     }
     return (
-        <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-            <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-sm">
+        <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#1e2470] via-[#3d3d8f] to-[#5b4b9e] px-4">
+            <div className="w-full max-w-md rounded-2xl bg-[#030517] p-8 shadow-sm">
                 <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-gray-900">Welcome Back</h1>
-                    <p className="mt-2 text-sm text-gray-600">Sign in to access the student dashboard.</p>
+                    <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
+                    <p className="mt-2 text-sm text-gray-400">Sign in to access the student dashboard.</p>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
                     <div>
                         <label
                             htmlFor="email"
-                            className="mb-2 block text-sm text-shadow-gray-700"
+                            className="mb-2 block text-sm text-white"
                         >
                             Email
                         </label>
                         <input
                             id="email" type="email" {...register("email")}
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-gray-900"
+                            className="w-full rounded-lg border border-[#bfc7f8] px-3 py-2 outline-none focus:border-[#6c7fef] text-gray-400"
+                            placeholder="example@email.com"
                         />
 
                         {errors.email && (
-                            <p>{errors.email.message}</p>
+                            <p className="mt-1 text-sm text-red-900">{errors.email.message}</p>
                         )}
                     </div>
 
                     <div>
                         <label
                             htmlFor="password"
-                            className="mb-2 block text-sm text-shadow-gray-700"
+                            className="mb-2 block text-sm text-white"
                         >
                             Password
                         </label>
                         <input
                             id="password" type="password" {...register("password")}
-                            className="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border:gray-900"
+                            className="w-full rounded-lg border border-[#bfc7f8] px-3 py-2 outline-none focus:border-[#6c7fef] text-gray-400"
+                            placeholder="some password"
                         />
                         {errors.password && (
-                            <p>{errors.password.message}</p>
+                            <p className="mt-1 text-sm text-red-900">{errors.password.message}</p>
                         )}
                     </div>
 
                     {loginMutation.isError && (
-                        <p>{loginMutation.error.message}</p>
+                        <p className="mt-1 text-sm text-red-900">{loginMutation.error.message}</p>
                     )}
 
-                    <button type="submit" disabled={loginMutation.isPending} className="w-full rounded-lg bg-gray-900 px-4 py-2.5 font-medium text-white disabled:cursor-not-allowed disabled:opacity-60">
+                    <button type="submit" disabled={loginMutation.isPending} className=" text-white font-bold w-full rounded-lg bg-[#6c7fef] px-4 py-2.5 text-white disabled:cursor-not-allowed disabled:opacity-60">
                         {loginMutation.isPending ? "Signing in..." : "Sign in"}
                     </button>
                 </form>
