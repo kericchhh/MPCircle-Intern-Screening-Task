@@ -1,7 +1,8 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useMutation } from "@tanstack/react-query"
+import { loginUser } from "../services/auth"
 
 import {
     loginSchema,
@@ -10,18 +11,16 @@ import {
 
 export default function LoginPage() {
     const navigate = useNavigate()
-    const [loginError, setLoginError] = useState("")
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) })
+    const loginMutation = useMutation({
+        mutationFn: loginUser,
+        onSuccess: () => {
+            navigate("/dashboard")
+        }
+    })
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) })
 
     async function onSubmit(data: LoginFormData) {
-        setLoginError("")
-        try {
-            await new Promise((resolve) => setTimeout(resolve, 1200))
-            console.log(data)
-            navigate("/dashboard")
-        } catch {
-            setLoginError("Something is wrong... Please try again.")
-        }
+        loginMutation.mutate(data)
     }
     return (
         <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
@@ -64,12 +63,12 @@ export default function LoginPage() {
                         )}
                     </div>
 
-                    {loginError && (
-                        <p>{loginError}</p>
+                    {loginMutation.isError && (
+                        <p>{loginMutation.error.message}</p>
                     )}
 
-                    <button type="submit" disabled={isSubmitting} className="w-full rounded-lg bg-gray-900 px-4 py-2.5 font-medium text-white disabled:cursor-not-allowed disabled:opacity-60">
-                        {isSubmitting ? "Signing in..." : "Sign in"}
+                    <button type="submit" disabled={loginMutation.isPending} className="w-full rounded-lg bg-gray-900 px-4 py-2.5 font-medium text-white disabled:cursor-not-allowed disabled:opacity-60">
+                        {loginMutation.isPending ? "Signing in..." : "Sign in"}
                     </button>
                 </form>
             </div>
