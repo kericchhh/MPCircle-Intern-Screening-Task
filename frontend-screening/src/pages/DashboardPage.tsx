@@ -20,9 +20,9 @@ export default function DashboardPage() {
     }
     return (
         <section>
-            <div className="mb-8">
+            <div className="mb-8 sm:mb-8">
                 <h1 className="text-2xl font-bold text-shadow-white sm:text-3xl">Welcome back, {user.firstName}</h1>
-                <p className="mt-2 text-gray-400">Here is your academic progress.</p>
+                <p className="mt-2 text-sm text-gray-400 sm:text-base">Here is your academic progress.</p>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -8,7 +8,7 @@ export default function CourseCard({ course }: CourseProps) {
     return (
         <article className="
         rounded-2xl border border-[#bfc7f8] bg-[#030517]
-        p-5 transition duration-300 ease-out 
+        p-5 sm:p-7 transition duration-300 ease-out 
         motion-safe:hover:-translate-y-1 motion-safe:scale-[1.02]">
             <div className="flex items-start justify-between gap-4">
                 <div>

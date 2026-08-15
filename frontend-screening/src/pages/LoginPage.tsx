@@ -45,6 +45,8 @@ export default function LoginPage() {
                             id="email" type="email" {...register("email")}
                             className="w-full rounded-lg border border-[#bfc7f8] px-3 py-2 outline-none focus:border-[#6c7fef] text-gray-400"
                             placeholder="example@email.com"
+                            aria-invalid={!!errors.email}
+                            aria-describedby={errors.email ? "email error" : undefined}
                         />
 
                         {errors.email && (
@@ -63,6 +65,8 @@ export default function LoginPage() {
                             id="password" type="password" {...register("password")}
                             className="w-full rounded-lg border border-[#bfc7f8] px-3 py-2 outline-none focus:border-[#6c7fef] text-gray-400"
                             placeholder="some password"
+                            aria-invalid={!!errors.password}
+                            aria-describedby={errors.password ? "password error" : undefined}
                         />
                         {errors.password && (
                             <p className="mt-1 text-sm text-red-900">{errors.password.message}</p>
@@ -70,10 +74,10 @@ export default function LoginPage() {
                     </div>
 
                     {loginMutation.isError && (
-                        <p className="mt-1 text-sm text-red-900">{loginMutation.error.message}</p>
+                        <p className="mt-1 text-sm text-red-900" role="alert">{loginMutation.error.message}</p>
                     )}
 
-                    <button type="submit" disabled={loginMutation.isPending} className=" text-white font-bold w-full rounded-lg bg-[#6c7fef] px-4 py-2.5 text-white disabled:cursor-not-allowed disabled:opacity-60">
+                    <button type="submit" aria-busy={loginMutation.isPending} disabled={loginMutation.isPending} className=" text-white font-bold w-full rounded-lg bg-[#6c7fef] px-4 py-2.5 text-white disabled:cursor-not-allowed disabled:opacity-60">
                         {loginMutation.isPending ? "Signing in..." : "Sign in"}
                     </button>
                 </form>
