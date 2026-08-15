@@ -64,7 +64,7 @@ export default function LoginPage() {
                         <input
                             id="password" type="password" {...register("password")}
                             className="w-full rounded-lg border border-[#bfc7f8] px-3 py-2 outline-none focus:border-[#6c7fef] text-gray-400"
-                            placeholder="some password"
+                            placeholder="min. 8 characters"
                             aria-invalid={!!errors.password}
                             aria-describedby={errors.password ? "password error" : undefined}
                         />
