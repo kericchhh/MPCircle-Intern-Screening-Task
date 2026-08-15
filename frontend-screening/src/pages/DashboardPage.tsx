@@ -13,10 +13,10 @@ export default function DashboardPage() {
         queryFn: getUser
     })
     if(isPending){
-        return <p>Loading dashboard...</p>
+        return <p className="text-gray-400">Loading dashboard...</p>
     }
     if(isError){
-        return <p>Error: {error.message}</p>
+        return <p className="text-red-400">Error: {error.message}</p>
     }
     return (
         <section>

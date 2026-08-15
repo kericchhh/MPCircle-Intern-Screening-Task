@@ -15,10 +15,10 @@ export default function CoursesPage() {
     })
 
     if(isPending){
-        return <p>Loading courses...</p>
+        return <p className="text-gray-400">Loading courses...</p>
     }
     if(isError){
-        return <p>Error: {error.message}</p>
+        return <p className="text-red-400">Error: {error.message}</p>
     }
 
     return(
