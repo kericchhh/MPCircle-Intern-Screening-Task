@@ -18,14 +18,14 @@ export default function Header() {
   }
 
   return (
-    <header className="border-b border-gray-200 bg-[#030517]">
+    <header className="p-3 border-b border-gray-700 bg-gradient-to-br from-[#1e2470] via-[#3d3d8f] to-[#5b4b9e]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-8">
           <div>
-            <h1 className="text-lg font-bold text-white">
+            <h1 className="text-2xl font-bold text-white">
               MPCircle
             </h1>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-300">
               Student Portal
             </p>
           </div>
@@ -42,8 +42,8 @@ export default function Header() {
                   [
                     "rounded-lg px-3 py-2 text-sm font-medium transition",
                     isActive
-                      ? "bg-[#6c7fef] text-white"
-                      : "text-gray-600 hover:bg-[#bfc7f8] hover:text-[#030517]",
+                      ? "bg-[#030517] text-white"
+                      : "text-gray-400 hover:bg-[#bfc7f8] hover:text-[#030517]",
                   ].join(" ")
                 }
               >
@@ -56,7 +56,7 @@ export default function Header() {
         <button
           type="button"
           onClick={handleLogout}
-          className="rounded-lg border border-[#bfc7f8] px-3 py-2 text-sm font-medium text-white hover:bg-[#6c7fef] hover:border-none"
+          className="rounded-lg border border-[#bfc7f8] px-3 py-2 text-sm font-medium text-white hover:bg-[#030617] hover:border-none"
         >
           Log out
         </button>
