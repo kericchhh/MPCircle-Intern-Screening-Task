@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-url.
+mpcirclescreening.netlify.app
 
 ## Overview
 
@@ -11,7 +11,7 @@ The application allows students to authenticate and view academic information in
 
 ## Features
 
-- Login with form validation(Use any email from provided mockAPI)
+- Login with form validation(Use any email from provided mockAPI, ex. emily.johnson@x.dummyjson.com)
 - Loading and error states
 - Protected routes
 - Student dashboard
